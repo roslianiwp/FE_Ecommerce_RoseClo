@@ -5,3 +5,47 @@
 #sign-in {
   font-family: "Handlee", cursive;
 }
+
+.button-color {
+  background-color: #2e2e2e !important;
+  color: #ffc8d1 !important;
+  font-size: 12px;
+}
+
+/* .bordersign {
+  border: 1px solid black;
+} */
+
+#logokabar {
+  width: 150px;
+  /* height: 50px; */
+}
+
+#movie {
+  height: 300px;
+}
+
+.cont-movie {
+  margin-top: 50px;
+}
+
+#button {
+  border-radius: 50px;
+  width: 50%;
+}
+
+.signin {
+  border: 1px #ffcdd2;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+.card {
+  background-color: #f4e4ba;
+}
+
+.badge-pill {
+  background-color: #2e2e2e !important;
+  color: #ffc8d1 !important;
+  font-size: 12px;
+}

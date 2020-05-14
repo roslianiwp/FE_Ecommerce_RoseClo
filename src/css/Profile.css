@@ -1,0 +1,12 @@
+#avatar {
+  width: 150px;
+}
+
+@media (min-width: 992px) {
+  #avatar {
+    width: 300px;
+  }
+  #konten {
+    font-size: 20px;
+  }
+}

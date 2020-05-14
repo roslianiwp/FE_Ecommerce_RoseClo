@@ -8,6 +8,13 @@ const initialState = {
   namaPengguna: "",
   kataKunci: "",
   statusError: true,
+  name: "",
+  province: "",
+  city: "",
+  postal_code: "",
+  city_type: "",
+  street: "",
+  phone: "",
 };
 
 export default function userReducer(userState = initialState, action) {
@@ -21,6 +28,7 @@ export default function userReducer(userState = initialState, action) {
       return {
         ...userState,
         token: action.payload.token,
+        status: action.payload.status,
         is_login: true,
       };
     case "SUCCESS_LOGOUT":
@@ -32,6 +40,28 @@ export default function userReducer(userState = initialState, action) {
       return {
         ...userState,
         statusError: false,
+      };
+    case "SUCCESS_PROFILE":
+      return {
+        ...userState,
+        statusError: false,
+      };
+    case "SUCCESS_EDIT_BIODATA":
+      return {
+        ...userState,
+        statusError: false,
+      };
+    case "GET_BIO":
+      return {
+        ...userState,
+        name: action.payload.name,
+        email: action.payload.email,
+        province: action.payload.province,
+        city: action.payload.city,
+        postal_code: action.payload.postal_code,
+        city_type: action.payload.city_type,
+        street: action.payload.street,
+        phone: action.payload.phone,
       };
     default:
       return userState;

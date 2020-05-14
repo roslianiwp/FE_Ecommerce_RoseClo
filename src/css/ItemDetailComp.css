@@ -1,0 +1,14 @@
+#gambar-detail {
+  display: none;
+}
+
+#baju-utama {
+  padding-right: 60px;
+}
+
+@media (min-width: 992px) {
+  #gambar-detail {
+    width: 100px;
+    display: inline;
+  }
+}

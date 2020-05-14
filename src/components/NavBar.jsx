@@ -2,12 +2,25 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import "../css/NavBar.css";
 
-const Navigation = () => {
+const Navigation = (props, postSignout, changeRouter) => {
+  postSignout = () => {
+    props.doSignOut();
+    props.history.push("/");
+  };
+  changeRouter = async (category) => {
+    if (props.handleRouter) {
+      await props.handleRouter(category);
+    } else {
+      props.history.replace("/item/" + category);
+    }
+  };
+  const login = localStorage.getItem("is_login");
+  const statusKu = localStorage.getItem("status");
   return (
     <Fragment>
       <div
         className="text-right pr-sm-auto"
-        style={{ backgroundColor: "#ffe9c5" }}
+        style={{ backgroundColor: "#ffcdd2" }}
       >
         <nav
           className="navbar navbar-expand-lg navbar-light pl-3"
@@ -42,33 +55,107 @@ const Navigation = () => {
                 />
               </div>
             </form>
-            <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5">
+            <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
               <li className="nav-item nav-link">
-                <Link
-                  to="/signin"
-                  className="nav-link"
-                  style={{ textDecoration: "none" }}
-                >
-                  Masuk
-                </Link>
-              </li>
-              <li className="nav-item nav-link">
-                <Link
-                  to="/signup"
-                  className="nav-link"
-                  style={{ textDecoration: "none" }}
-                >
-                  Daftar
-                </Link>
+                <i className="fas fa-shopping-bag fa-2x" id="shopping"></i>
               </li>
             </ul>
+            {login ? (
+              <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
+                <li className="nav-item nav-link" id="huruf">
+                  <Link
+                    to="/profile"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <i class="far fa-user-circle fa-2x"></i>
+                  </Link>
+                </li>
+                <li className="nav-item nav-link" id="huruf">
+                  <Link
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                    onClick={() => postSignout()}
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
+                <li className="nav-item nav-link" id="huruf">
+                  <Link
+                    to="/signin"
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Masuk
+                  </Link>
+                </li>
+                <li className="nav-item nav-link" id="huruf">
+                  <Link
+                    to="/signup"
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Daftar
+                  </Link>
+                </li>
+              </ul>
+            )}
+            <ul className="navbar-nav " id="gede-ilang">
+              <li className="nav-item active">
+                <a className="nav-link" href="/">
+                  SALE <span className="sr-only">(current)</span>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Kemeja
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Celana
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/">
+                  Sepatu
+                </a>
+              </li>
+            </ul>
+            {statusKu === "customer" || login === null ? (
+              <ul className="navbar-nav" id="gede-ilang-selling">
+                <li className="nav-item">
+                  <Link
+                    to="/signupseller"
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Start Selling
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav" id="gede-ilang-selling">
+                <li className="nav-item">
+                  <Link
+                    to="/inputproduct"
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Input Product!
+                  </Link>
+                </li>
+              </ul>
+            )}
           </div>
         </nav>
       </div>
       {/* ===============Navbar kedua===================== */}
       <nav
         className="navbar navbar-expand-lg navbar-light pl-5"
-        style={{ backgroundColor: "#b4f2e1" }}
+        style={{ backgroundColor: "white" }}
         id="navbar-kedua"
       >
         <button
@@ -83,39 +170,53 @@ const Navigation = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <a className="nav-link" href="/">
-                SALE <span className="sr-only">(current)</span>
-              </a>
+          <ul className="navbar-nav kedua">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                SALE <span className="sr-only"></span>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
-                Pakaian
-              </a>
+              <Link className="nav-link" onClick={() => changeRouter(2)}>
+                Kemeja
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" onClick={() => changeRouter(1)}>
+                Celana
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" onClick={() => changeRouter(4)}>
                 Sepatu
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                Aksesoris
-              </a>
-            </li>
-          </ul>
-          <ul className="navbar-nav ml-auto" id="selling">
-            <li className="nav-item">
-              <Link
-                to="/signupseller"
-                className="nav-link"
-                style={{ textDecoration: "none" }}
-              >
-                Start Selling
               </Link>
             </li>
           </ul>
+          {statusKu === "customer" || login === null ? (
+            <ul className="navbar-nav ml-auto" id="selling">
+              <li className="nav-item">
+                <Link
+                  to="/signupseller"
+                  className="nav-link"
+                  style={{ textDecoration: "none" }}
+                >
+                  Start Selling
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul className="navbar-nav ml-auto" id="selling">
+              <li className="nav-item">
+                <Link
+                  to="/inputproduct"
+                  className="nav-link"
+                  style={{ textDecoration: "none" }}
+                >
+                  Input Product!
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
     </Fragment>

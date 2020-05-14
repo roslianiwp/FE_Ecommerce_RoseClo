@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 // import { Link } from "react-router-dom";
 import { MDBInput } from "mdbreact";
 
-const SignUpModal = (props, postSignup) => {
+const SignUpModal2 = (props, postSignup) => {
   postSignup = async () => {
     await props.doSignUpCustomer();
 
@@ -19,7 +19,7 @@ const SignUpModal = (props, postSignup) => {
         tabindex="-1"
         role="dialog"
         aria-labelledby="myModalLabel"
-        aria-hidden="true"
+        aria-hidden="false"
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -31,7 +31,7 @@ const SignUpModal = (props, postSignup) => {
                 data-dismiss="modal"
                 aria-label="Close"
               >
-                <span aria-hidden="true">&times;</span>
+                <span aria-hidden="false">&times;</span>
               </button>
             </div>
 
@@ -82,4 +82,4 @@ const SignUpModal = (props, postSignup) => {
     </Fragment>
   );
 };
-export default SignUpModal;
+export default SignUpModal2;

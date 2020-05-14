@@ -1,0 +1,37 @@
+.font-small {
+  color: black !important;
+}
+
+.logo {
+  width: 30px;
+  height: 30px;
+  margin: 7px;
+  margin-bottom: 10px;
+}
+
+#titlecontact {
+  margin-top: 20px;
+}
+.warna-footer {
+  background-color: #ffcdd2 !important;
+}
+
+.footer-copyright {
+  background-color: black !important;
+}
+
+@media (min-width: 992px) {
+  #footer-p {
+    padding-left: 40px;
+  }
+  #logo {
+    width: 200px;
+  }
+  .font-small {
+    color: black !important;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+}

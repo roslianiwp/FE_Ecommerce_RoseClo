@@ -1,20 +1,21 @@
 import React, { Fragment } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   doLogin,
   changeInputUser,
   doSignUpCustomer,
+  doSignOut,
 } from "../store/action/actionUser";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 import Navigation from "../components/NavBar";
 import "../css/SignIn.css";
-import SignUpModal from "../components/SignUpCompModal";
+import Footer from "../components/Footer";
 
 class SignIn extends React.Component {
   postLogin = async () => {
     await this.props.doLogin();
-    const is_login = this.props.login;
+    const is_login = localStorage.getItem("is_login");
     if (is_login) {
       this.props.history.push("/");
     }
@@ -23,7 +24,7 @@ class SignIn extends React.Component {
     return (
       <Fragment>
         <Navigation {...this.props} />
-        <MDBContainer>
+        <MDBContainer className="bordersign">
           <MDBRow>
             <MDBCol sm="0" lg="3"></MDBCol>
             <MDBCol sm="12" lg="6">
@@ -59,13 +60,29 @@ class SignIn extends React.Component {
                   />
                 </div>
                 <div className="text-center">
-                  <MDBBtn onClick={() => this.postLogin()}>Login</MDBBtn>
+                  <MDBBtn
+                    className="button-color"
+                    onClick={() => this.postLogin()}
+                  >
+                    Login
+                  </MDBBtn>
                 </div>
               </form>
             </MDBCol>
           </MDBRow>
-          <SignUpModal {...this.props} />
+          <div className="text-center">
+            <MDBBtn className="button-color">
+              <Link
+                to="/signup"
+                className="button-color"
+                style={{ textDecoration: "none" }}
+              >
+                Anda belum terdaftar?
+              </Link>
+            </MDBBtn>
+          </div>
         </MDBContainer>
+        <Footer />
       </Fragment>
     );
   }
@@ -84,5 +101,6 @@ const mapDispatchToProps = {
   changeInput: (e) => changeInputUser(e),
   doLogin,
   doSignUpCustomer,
+  doSignOut,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
