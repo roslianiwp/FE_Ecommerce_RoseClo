@@ -31,6 +31,7 @@ const MainRoutes = () => {
           <Route exact path="/biodata" component={FormBiodata} />
           <Route exact path="/inputproduct" component={InputProduct} />
           <Route exact path="/item/:category" component={Items} />
+          <Route exact path="/itemdetail/:id" component={ItemDetail} />
         </Switch>
       </BrowserRouter>
     </Provider>

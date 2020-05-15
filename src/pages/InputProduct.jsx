@@ -15,7 +15,7 @@ class InputProduct extends React.Component {
   inputProduk = async () => {
     await this.props.inputProdukSeller();
     this.props.statusError
-      ? alert("anda gagal mengedit profile!")
+      ? alert("anda gagal ngepost produk!")
       : this.props.history.push("/");
   };
 

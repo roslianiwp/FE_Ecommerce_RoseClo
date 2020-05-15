@@ -5,23 +5,22 @@ import "../css/ItemDetailComp.css";
 // import ReactDOM from "react-dom";
 // import ReactImageZoom from "react-image-zoom";
 
-const ItemDetailComp = () => {
+const ItemDetailComp = ({ gambar, harga, nama, warna, size }) => {
   return (
     <Fragment>
       <div className="container">
         <div className="row">
           <div className="col-sm-5 mt-5 justify-content-end text-right">
-            <img
-              src={require("../images/baju8.jpg")}
-              alt="baju"
-              id="baju-utama"
-            />
+            <img src={gambar} alt="baju" id="baju-utama" />
           </div>
           <div className="col-sm-7 mt-5 text-center justify-content-start">
-            <h5>BRAND</h5>
-            <span>Nama produk</span>
+            <h4>{nama}</h4>
             <br />
-            <span>Rp.XXX.XXX,00</span>
+            <span>Rp.{harga}.-</span>
+            <br />
+            <span>Warna: {warna}</span>
+            <br />
+            <span>Size: {size}</span>
             <div className="row mt-4 justify-content-center">
               <button
                 type="button"
@@ -52,25 +51,13 @@ const ItemDetailComp = () => {
           <div className="col-sm-5 mt-5">
             <div className="row" style={{ marginLeft: "100px" }}>
               <div className="col-3">
-                <img
-                  src={require("../images/baju8.jpg")}
-                  alt="baju"
-                  id="gambar-detail"
-                />
+                <img src={gambar} alt="baju" id="gambar-detail" />
               </div>
               <div className="col-3">
-                <img
-                  src={require("../images/baju8.jpg")}
-                  alt="baju"
-                  id="gambar-detail"
-                />
+                <img src={gambar} alt="baju" id="gambar-detail" />
               </div>
               <div className="col-3">
-                <img
-                  src={require("../images/baju8.jpg")}
-                  alt="baju"
-                  id="gambar-detail"
-                />
+                <img src={gambar} alt="baju" id="gambar-detail" />
               </div>
             </div>
           </div>

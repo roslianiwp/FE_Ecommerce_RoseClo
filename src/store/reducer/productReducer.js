@@ -10,6 +10,7 @@ const initialState = {
   image: "",
   kategori: "",
   data: [],
+  dataDetail: [],
   statusError: true,
 };
 
@@ -45,6 +46,11 @@ export default function productReducer(productState = initialState, action) {
       return {
         ...productState,
         data: action.payload,
+      };
+    case "REQUEST_LIST_DETAIL_SUCCESS":
+      return {
+        ...productState,
+        dataDetail: action.payload,
       };
     default:
       return productState;

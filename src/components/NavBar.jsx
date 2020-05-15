@@ -103,25 +103,20 @@ const Navigation = (props, postSignout, changeRouter) => {
               </ul>
             )}
             <ul className="navbar-nav " id="gede-ilang">
-              <li className="nav-item active">
-                <a className="nav-link" href="/">
-                  SALE <span className="sr-only">(current)</span>
-                </a>
-              </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <Link className="nav-link" onClick={() => changeRouter(2)}>
                   Kemeja
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <Link className="nav-link" onClick={() => changeRouter(1)}>
                   Celana
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/">
+                <Link className="nav-link" onClick={() => changeRouter(4)}>
                   Sepatu
-                </a>
+                </Link>
               </li>
             </ul>
             {statusKu === "customer" || login === null ? (
@@ -173,7 +168,7 @@ const Navigation = (props, postSignout, changeRouter) => {
           <ul className="navbar-nav kedua">
             <li className="nav-item">
               <Link className="nav-link" to="/">
-                SALE <span className="sr-only"></span>
+                Our Products <span className="sr-only"></span>
               </Link>
             </li>
             <li className="nav-item">

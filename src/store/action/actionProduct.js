@@ -60,6 +60,7 @@ export const inputProdukSeller = (props) => {
 
 export const getProduk = (props) => {
   return async (dispatch) => {
+    console.warn("cek dari sblm dispatch getProduk");
     await axios
       .get("http://0.0.0.0:5050/items", {
         headers: {
@@ -69,7 +70,6 @@ export const getProduk = (props) => {
       })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_PRODUCT", payload: response.data });
-        // console.warn("cek dari fungsi getProduk", response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -94,5 +94,16 @@ export const getRes = (category) => {
         payload: filtercategory,
       });
     }
+  };
+};
+
+export const getDetail = (category) => {
+  return async (dispatch) => {
+    const response = await axios.get("http://0.0.0.0:5050/items/" + category);
+    console.warn("cek dari getRes action", category);
+    dispatch({
+      type: "REQUEST_LIST_DETAIL_SUCCESS",
+      payload: response.data,
+    });
   };
 };
