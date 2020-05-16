@@ -1,9 +1,9 @@
 import React from "react";
 import Navigation from "../components/NavBar";
 import Footer from "../components/Footer";
+import "../css/Items.css";
 import { connect } from "react-redux";
 import { doSignOut } from "../store/action/actionUser";
-import { Link } from "react-router-dom";
 import { getProduk, getRes } from "../store/action/actionProduct";
 import { MDBBtn } from "mdbreact";
 
@@ -24,7 +24,6 @@ class Items extends React.Component {
   };
 
   changeRouterDetail = (e) => {
-    console.warn("cek changerouterdetail", e.target.value);
     e.preventDefault();
     this.props.history.push("/itemdetail/" + e.target.value);
   };
@@ -32,7 +31,6 @@ class Items extends React.Component {
   render() {
     const dagangan = this.props.data.filter((item) => {
       if (item.image !== null) {
-        console.warn("cek id", item.id);
         return item;
       }
       return false;
@@ -46,11 +44,13 @@ class Items extends React.Component {
         />
         <h3 className="text-center mt-5">Available Items</h3>
         <hr style={{ width: "30%", backgroundColor: "#ffcdd2" }} />
-        <div className="container">
-          <div className="row mt-sm-5">
+        <div className="container-fluid">
+          <div className="row">
             {dagangan.map((el, index) => (
-              <div class="col-sm-3 text-center" key={index}>
-                <img src={el.image} alt="baju" />
+              <div className="col-sm-3 text-center" key={index}>
+                <img src={el.image} alt="baju" className="zoom" />
+
+                <br />
                 <span>{el.name}</span>
                 <br />
                 <span>Rp.{el.price},-</span>
@@ -76,6 +76,7 @@ const mapStateToProps = (state) => {
   return {
     login: state.user.is_login,
     data: state.product.data,
+    countCart: state.product.countCart,
   };
 };
 

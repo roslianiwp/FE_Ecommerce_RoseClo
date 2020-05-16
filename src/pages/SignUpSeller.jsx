@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Footer from "../components/Footer";
 import Navigation from "../components/NavBar";
@@ -39,7 +38,7 @@ class SignUpSeller extends React.Component {
                           alt="logokabar"
                           id="logokabar"
                         ></img>
-                        <h4>Seller Signup Form</h4>
+                        <h5>Seller Signup Form</h5>
                         <form>
                           <div className="form-group">
                             <input
@@ -89,7 +88,7 @@ const mapStateToProps = (state) => {
   return {
     namaPengguna: state.user.namaPengguna,
     kataKunci: state.user.kataKunci,
-    // login: state.user.is_login,
+    login: state.user.is_login,
     statusError: state.user.statusError,
   };
 };

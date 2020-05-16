@@ -20,7 +20,6 @@ class Home extends React.Component {
   };
 
   render() {
-    console.warn("cek dari home", this);
     const dagangan = this.props.data.filter((item) => {
       if (item.image !== null) {
         return item;
@@ -34,12 +33,12 @@ class Home extends React.Component {
           {...this.props}
         />
         <CarouselHome />
-        <div className="container text-center mt-sm-5">
+        <div className="container-fluid text-center mt-sm-5">
           <span id="judul">Available Items</span>
           <hr />
           <div className="row mt-5 baju">
             {dagangan.slice(0, 8).map((el, index) => (
-              <div class="col-sm-3" key={index}>
+              <div className="col-sm-3" key={index}>
                 <NewArrival
                   nama={el.name}
                   harga={el.price}

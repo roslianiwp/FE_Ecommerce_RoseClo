@@ -128,6 +128,7 @@ export const getBiodata = () => {
 
 export const editBiodata = (props) => {
   return async (dispatch, getState) => {
+    const isian = getState().user.bio;
     const bodyRequest = {
       name: getState().user.name,
       email: getState().user.email,
@@ -141,36 +142,70 @@ export const editBiodata = (props) => {
     const myJSON = JSON.stringify(bodyRequest);
     const status = localStorage.getItem("status");
     const token = localStorage.getItem("token");
-    if (status === "customer") {
-      await axios
-        .post("http://0.0.0.0:5050/customer/profile", myJSON, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(async (response) => {
-          dispatch({ type: "SUCCESS_PROFILE" });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    } else if (status === "seller") {
-      await axios
-        .post("http://0.0.0.0:5050/shop/profile", myJSON, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then(async (response) => {
-          dispatch({ type: "SUCCESS_PROFILE" });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+    if (isian === []) {
+      if (status === "customer") {
+        await axios
+          .post("http://0.0.0.0:5050/customer/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_PROFILE" });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else if (status === "seller") {
+        await axios
+          .post("http://0.0.0.0:5050/shop/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_PROFILE" });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    } else if (isian !== []) {
+      if (status === "customer") {
+        await axios
+          .patch("http://0.0.0.0:5050/customer/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_PROFILE" });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      } else if (status === "seller") {
+        await axios
+          .patch("http://0.0.0.0:5050/shop/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_PROFILE" });
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
     }
   };
 };

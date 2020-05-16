@@ -16,8 +16,11 @@ class SignIn extends React.Component {
   postLogin = async () => {
     await this.props.doLogin();
     const is_login = localStorage.getItem("is_login");
-    if (is_login) {
+    const status = localStorage.getItem("status");
+    if (is_login && status !== "admin") {
       this.props.history.push("/");
+    } else if (is_login && status === "admin") {
+      this.props.history.push("/admin");
     }
   };
   render() {

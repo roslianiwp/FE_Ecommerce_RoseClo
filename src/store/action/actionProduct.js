@@ -1,5 +1,4 @@
 import axios from "axios";
-import { bindActionCreators } from "redux";
 
 export const changeInputProduct = (e) => {
   return {
@@ -12,7 +11,6 @@ export const inputProdukSeller = (props) => {
   return async (dispatch, getState) => {
     const category = getState().product.kategori;
     const promo = getState().product.promo;
-
     let id;
     if (category === "sepatu") {
       id = 4;
@@ -60,7 +58,6 @@ export const inputProdukSeller = (props) => {
 
 export const getProduk = (props) => {
   return async (dispatch) => {
-    console.warn("cek dari sblm dispatch getProduk");
     await axios
       .get("http://0.0.0.0:5050/items", {
         headers: {
@@ -80,7 +77,6 @@ export const getProduk = (props) => {
 export const getRes = (category) => {
   return async (dispatch) => {
     const response = await axios.get("http://0.0.0.0:5050/items");
-    console.warn("cek dari getRes action", category);
     if (category !== null) {
       const filtercategory = response.data.filter((item) => {
         if (item.product_category_id == category) {
@@ -100,10 +96,10 @@ export const getRes = (category) => {
 export const getDetail = (category) => {
   return async (dispatch) => {
     const response = await axios.get("http://0.0.0.0:5050/items/" + category);
-    console.warn("cek dari getRes action", category);
     dispatch({
       type: "REQUEST_LIST_DETAIL_SUCCESS",
       payload: response.data,
     });
+    console.warn("cek dari getDetail", response.data);
   };
 };

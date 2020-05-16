@@ -2,11 +2,44 @@
   width: 150px;
 }
 
+.container {
+  padding: 5%;
+}
+.container .img {
+  text-align: center;
+}
+.container .details {
+  border-left: 0px solid #ded4da;
+  text-align: center;
+}
+.container .details p {
+  font-size: 10px;
+  font-weight: bold;
+}
+
 @media (min-width: 992px) {
   #avatar {
     width: 300px;
   }
   #konten {
     font-size: 20px;
+  }
+  .container {
+    padding: 5%;
+  }
+  .container .img {
+    text-align: center;
+  }
+  .container .details {
+    border-left: 3px solid #ded4da;
+    text-align: left;
+    font-size: 20px;
+  }
+  .container .details p {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .container h4 {
+    font-size: 40px;
   }
 }

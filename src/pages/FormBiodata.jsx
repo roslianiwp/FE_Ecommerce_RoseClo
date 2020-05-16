@@ -28,44 +28,50 @@ class FormBiodata extends React.Component {
             <div className="col-sm-6">
               <h3 className="mt-5">Form Data Diri</h3>
               <form>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Nama</label>
+                <div className="form-group">
+                  <label for="formGroupExampleInput" className="label">
+                    Nama
+                  </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="formGroupExampleInput"
                     placeholder="Nama..."
                     name="name"
                     onChange={(e) => this.props.changeInput(e)}
                   />
                 </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Email</label>
+                <div className="form-group">
+                  <label for="formGroupExampleInput" className="label">
+                    Email
+                  </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="formGroupExampleInput"
                     placeholder="Email..."
                     name="email"
                     onChange={(e) => this.props.changeInput(e)}
                   />
                 </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">
+                <div className="form-group">
+                  <label for="formGroupExampleInput" className="label">
                     Tempat, Tanggal Lahir
                   </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="formGroupExampleInput"
                     placeholder="Birth of Date..."
                   />
                 </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">No Handphone</label>
+                <div className="form-group">
+                  <label for="formGroupExampleInput" className="label">
+                    No Handphone
+                  </label>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="formGroupExampleInput"
                     placeholder="No Handphone..."
                     name="phone"
@@ -74,62 +80,76 @@ class FormBiodata extends React.Component {
                 </div>
               </form>
               <div className="text-center justify-content-center">
-                <MDBBtn color="secondary" onClick={() => this.editBio()}>
+                <MDBBtn
+                  color="secondary"
+                  className="btnku"
+                  onClick={() => this.editBio()}
+                >
                   Submit
                 </MDBBtn>
               </div>
             </div>
             <div className="col-sm-6">
-              <h4 className="mt-5">Informasi Alamat</h4>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Alamat Rumah</label>
+              <h5 className="mt-5">Informasi Alamat</h5>
+              <div className="form-group">
+                <label for="formGroupExampleInput" className="label">
+                  Alamat Rumah
+                </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Alamat Rumah.."
                   name="street"
                   onChange={(e) => this.props.changeInput(e)}
                 />
               </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Kota</label>
+              <div className="form-group">
+                <label for="formGroupExampleInput" className="label">
+                  Kota
+                </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Kota.."
                   name="city"
                   onChange={(e) => this.props.changeInput(e)}
                 />
               </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Tipe Kota</label>
+              <div className="form-group">
+                <label for="formGroupExampleInput" className="label">
+                  Tipe Kota
+                </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Tipe Kota.."
                   name="city_type"
                   onChange={(e) => this.props.changeInput(e)}
                 />
               </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Provinsi</label>
+              <div className="form-group">
+                <label for="formGroupExampleInput" className="label">
+                  Provinsi
+                </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Provinsi.."
                   name="province"
                   onChange={(e) => this.props.changeInput(e)}
                 />
               </div>
-              <div class="form-group">
-                <label for="formGroupExampleInput">Kode Pos</label>
+              <div className="form-group">
+                <label for="formGroupExampleInput" className="label">
+                  Kode Pos
+                </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="formGroupExampleInput"
                   placeholder="Kode Pos.."
                   name="postal_code"

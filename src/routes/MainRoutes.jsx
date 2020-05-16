@@ -14,6 +14,8 @@ import store from "../store";
 import SignUpSeller from "../pages/SignUpSeller";
 import FormBiodata from "../pages/FormBiodata";
 import InputProduct from "../pages/InputProduct";
+import NotFound from "../pages/NotFound";
+import Cart from "../pages/Cart";
 
 const MainRoutes = () => {
   return (
@@ -30,8 +32,10 @@ const MainRoutes = () => {
           <Route exact path="/signupseller" component={SignUpSeller} />
           <Route exact path="/biodata" component={FormBiodata} />
           <Route exact path="/inputproduct" component={InputProduct} />
+          <Route exact path="/cart" component={Cart} />
           <Route exact path="/item/:category" component={Items} />
           <Route exact path="/itemdetail/:id" component={ItemDetail} />
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     </Provider>

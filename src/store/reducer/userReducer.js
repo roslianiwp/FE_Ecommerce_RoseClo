@@ -15,6 +15,7 @@ const initialState = {
   city_type: "",
   street: "",
   phone: "",
+  bio: [],
 };
 
 export default function userReducer(userState = initialState, action) {
@@ -62,6 +63,7 @@ export default function userReducer(userState = initialState, action) {
         city_type: action.payload.city_type,
         street: action.payload.street,
         phone: action.payload.phone,
+        bio: action.payload,
       };
     default:
       return userState;

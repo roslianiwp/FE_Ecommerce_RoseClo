@@ -17,7 +17,6 @@ class Profile extends React.Component {
     this.props.getBiodata();
   };
   render() {
-    console.warn("cek dari halaman profile", this.props);
     const login = localStorage.getItem("is_login");
     if (!login) {
       return <Redirect to={{ pathname: "/signin" }} />;
@@ -25,40 +24,45 @@ class Profile extends React.Component {
       return (
         <Fragment>
           <Navigation {...this.props} />
+
+          {/* <div className="container justify-content-start text-center mt-5"> */}
+
           <section>
-            <div className="container justify-content-start text-center mt-5">
-              <h1>Profile</h1>
-              <div className="row mt-5">
-                <div className="col-sm-5">
+            <div className="container justify-content-start mt-5">
+              {/* <h1>Profile</h1> */}
+              <div className="row">
+                <div className="col-md-6 img">
                   <img
-                    src={require("../images/avatar.png")}
-                    alt="avatar"
-                    id="avatar"
-                  ></img>
+                    src="https://source.unsplash.com/350x350/?person,headshot"
+                    alt=""
+                    className="img-rounded"
+                  />
                 </div>
-                <div className="col-sm-7">
-                  <p id="konten">
-                    <label>Name: {this.props.name} </label>
-                    <br />
-                    <label>Email: {this.props.email} </label>
-                    <br />
-                    <label>Province: {this.props.province}</label>
-                    <br />
-                    <label>City: {this.props.city}</label>
-                    <br />
-                    <label>Postal Code: {this.props.postal_code}</label>
-                    <br />
-                    <label>City type: {this.props.city_type}</label>
-                    <br />
-                    <label>Street: {this.props.street}</label>
-                    <br />
-                    <label>Phone: {this.props.phone}</label>
+                <div className="col-md-6 details">
+                  <blockquote>
+                    <h4>{this.props.name}</h4>
+                    <h5>{this.props.email}</h5>
+                    <small>
+                      <cite title="Source Title">
+                        {this.props.street}, {this.props.city}
+                        <br />
+                        {this.props.province}, Indonesia
+                        <br />
+                        {this.props.postal_code}
+                        <br />
+                        {this.props.phone}
+                        <i className="icon-map-marker"></i>
+                      </cite>
+                    </small>
+                  </blockquote>
+                  <p>
+                    <Link to="/biodata">Edit/Isi data dirimu</Link>
                   </p>
-                  <Link to="/biodata">Edit/Isi data dirimu</Link>
                 </div>
               </div>
             </div>
           </section>
+
           <Footer />
         </Fragment>
       );

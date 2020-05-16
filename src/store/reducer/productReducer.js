@@ -11,6 +11,7 @@ const initialState = {
   kategori: "",
   data: [],
   dataDetail: [],
+  countCart: 0,
   statusError: true,
 };
 

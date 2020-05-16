@@ -16,3 +16,11 @@
   /* hide the glass by default */
   display: none;
 }
+
+.label {
+  font-size: 20px !important;
+}
+
+.btnku {
+  font-size: 15px !important;
+}

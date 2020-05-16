@@ -1,11 +1,3 @@
-#judul {
-  font-size: 40px;
-}
-
-span .baju {
-  padding-top: 120px;
-}
-
 .zoom {
   /* padding: 50px; */
   transition: transform 0.2s;

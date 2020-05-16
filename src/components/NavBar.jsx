@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import Badge from "@material-ui/core/Badge";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import "../css/NavBar.css";
 
 const Navigation = (props, postSignout, changeRouter) => {
@@ -57,7 +60,15 @@ const Navigation = (props, postSignout, changeRouter) => {
             </form>
             <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
               <li className="nav-item nav-link">
-                <i className="fas fa-shopping-bag fa-2x" id="shopping"></i>
+                <Link to="/cart">
+                  <IconButton aria-label="cart">
+                    <Badge badgeContent={4} color="secondary">
+                      <ShoppingCartIcon
+                        style={{ width: "40px", height: "40px" }}
+                      />
+                    </Badge>
+                  </IconButton>
+                </Link>
               </li>
             </ul>
             {login ? (
@@ -67,7 +78,7 @@ const Navigation = (props, postSignout, changeRouter) => {
                     to="/profile"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <i class="far fa-user-circle fa-2x"></i>
+                    <i className="far fa-user-circle fa-2x"></i>
                   </Link>
                 </li>
                 <li className="nav-item nav-link" id="huruf">

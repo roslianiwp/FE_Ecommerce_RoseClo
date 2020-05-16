@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Footer from "../components/Footer";
 import Navigation from "../components/NavBar";
@@ -102,7 +101,6 @@ class SignUp extends React.Component {
   }
 }
 
-// export default SignUp;
 const mapStateToProps = (state) => {
   return {
     namaPengguna: state.user.namaPengguna,
