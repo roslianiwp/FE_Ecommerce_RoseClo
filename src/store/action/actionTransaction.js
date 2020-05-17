@@ -24,7 +24,7 @@ export const getTransDetail = (props) => {
 };
 
 export const postTrans = (item) => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const token = localStorage.getItem("token");
     const bodyRequest = {
       product_id: item,

@@ -75,6 +75,7 @@ class Cart extends React.Component {
                                   <br />
                                   <small>harga: {subel.product_id.price}</small>
                                   <h5>jumlah barang:{el.cart.total_qty}</h5>
+                                  
                                 </h5>
                               </div>
                             );
@@ -92,13 +93,13 @@ class Cart extends React.Component {
                                 .map((subel, i) => {
                                   return (
                                     <div key={i}>
-                                      <MDBBtn
+                                      <button
                                         className="button-color"
                                         value={subel.id}
                                         onClick={(e) => this.delTrans(e)}
                                       >
                                         Delete item
-                                      </MDBBtn>
+                                      </button>
                                     </div>
                                   );
                                 })}
