@@ -100,6 +100,5 @@ export const getDetail = (category) => {
       type: "REQUEST_LIST_DETAIL_SUCCESS",
       payload: response.data,
     });
-    console.warn("cek dari getDetail", response.data);
   };
 };

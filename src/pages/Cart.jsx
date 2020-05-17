@@ -9,8 +9,6 @@ import {
   checkOut,
 } from "../store/action/actionTransaction";
 import { getDetail } from "../store/action/actionProduct";
-// import { Link } from "react-router-dom";
-import { MDBBtn } from "mdbreact";
 
 class Cart extends React.Component {
   componentDidMount = async () => {

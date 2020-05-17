@@ -13,7 +13,6 @@ export const getTransDetail = (props) => {
       })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_TRANSDETAIL", payload: response.data });
-        console.warn("cek dari dalem getTransDetail", response.data);
       })
       .catch(function (error) {
         console.log(error);
