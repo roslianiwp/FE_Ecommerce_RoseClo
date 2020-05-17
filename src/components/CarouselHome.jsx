@@ -17,12 +17,13 @@ const CarouselHome = () => {
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-      <div className="carousel-inner">
+      <div className="carousel-inner" id="besar">
         <div className="carousel-item active">
           <img
             className="d-block w-100"
             src={require("../images/car1.png")}
             alt="First slide"
+            style={{width:"100%"}}
           />
         </div>
         <div className="carousel-item">
@@ -30,6 +31,7 @@ const CarouselHome = () => {
             className="d-block w-100"
             src={require("../images/car2.png")}
             alt="Second slide"
+            style={{width:"100%"}}
           />
         </div>
         <div className="carousel-item">
@@ -37,6 +39,33 @@ const CarouselHome = () => {
             className="d-block w-100"
             src={require("../images/car3.png")}
             alt="Third slide"
+            style={{width:"100%"}}
+          />
+        </div>
+      </div>
+      <div className="carousel-inner" id="kecil">
+        <div className="carousel-item active">
+          <img
+            className="d-block w-100"
+            src={require("../images/carouselHP1.png")}
+            alt="First slide"
+            style={{width:"100%"}}
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            className="d-block w-100"
+            src={require("../images/carouselHP2.png")}
+            alt="Second slide"
+            style={{width:"100%"}}
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            className="d-block w-100"
+            src={require("../images/carouselHP3.png")}
+            alt="Third slide"
+            style={{width:"100%"}}
           />
         </div>
       </div>

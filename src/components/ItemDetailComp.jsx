@@ -5,22 +5,31 @@ import "../css/ItemDetailComp.css";
 // import ReactDOM from "react-dom";
 // import ReactImageZoom from "react-image-zoom";
 
-const ItemDetailComp = ({ gambar, harga, nama, warna, size }) => {
+const ItemDetailComp = (props, postTransaction) => {
+  postTransaction = async (e) => {
+    e.preventDefault();
+    await props.postCart(e.target.value);
+
+    props.statusError
+      ? alert("anda belum berhasil sign up!")
+      : props.history.push("/cart");
+  };
+
   return (
     <Fragment>
       <div className="container">
         <div className="row">
           <div className="col-sm-5 mt-5 justify-content-end text-right">
-            <img src={gambar} alt="baju" id="baju-utama" />
+            <img src={props.gambar} alt="baju" id="baju-utama" />
           </div>
           <div className="col-sm-7 mt-5 text-center justify-content-start">
-            <h4>{nama}</h4>
+            <h4>{props.nama}</h4>
             <br />
-            <span>Rp.{harga}.-</span>
+            <span>Rp.{props.harga}.-</span>
             <br />
-            <span>Warna: {warna}</span>
+            <span>Warna: {props.warna}</span>
             <br />
-            <span>Size: {size}</span>
+            <span>Size: {props.size}</span>
             <div className="row mt-4 justify-content-center">
               <button
                 type="button"
@@ -30,6 +39,8 @@ const ItemDetailComp = ({ gambar, harga, nama, warna, size }) => {
                   borderRadius: "50px",
                   fontWeight: "bold",
                 }}
+                value={props.id}
+                onClick={(e) => postTransaction(e)}
               >
                 Add to Cart
               </button>
@@ -51,13 +62,13 @@ const ItemDetailComp = ({ gambar, harga, nama, warna, size }) => {
           <div className="col-sm-5 mt-5">
             <div className="row" style={{ marginLeft: "100px" }}>
               <div className="col-3">
-                <img src={gambar} alt="baju" id="gambar-detail" />
+                <img src={props.gambar} alt="baju" id="gambar-detail" />
               </div>
               <div className="col-3">
-                <img src={gambar} alt="baju" id="gambar-detail" />
+                <img src={props.gambar} alt="baju" id="gambar-detail" />
               </div>
               <div className="col-3">
-                <img src={gambar} alt="baju" id="gambar-detail" />
+                <img src={props.gambar} alt="baju" id="gambar-detail" />
               </div>
             </div>
           </div>

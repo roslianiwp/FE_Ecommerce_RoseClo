@@ -1,8 +1,15 @@
-.w-100 {
-  height: 300px;
+#besar {
+  display: none;
 }
+#kecil {
+  display: flex
+}
+
 @media (min-width: 992px) {
-  .w-100 {
-    height: auto;
+  #besar {
+    display: flex
+  }
+  #kecil {
+    display: none;
   }
 }

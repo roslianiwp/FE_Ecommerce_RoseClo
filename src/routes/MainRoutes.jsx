@@ -1,16 +1,13 @@
 import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-
+import { Provider } from "react-redux";
+import store from "../store";
 import Home from "../pages/Home";
-// import NotMatch from "../pages/NotMatch";
 import Profile from "../pages/Profile";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Items from "../pages/Items";
 import ItemDetail from "../pages/ItemDetail";
-
-import { Provider } from "react-redux";
-import store from "../store";
 import SignUpSeller from "../pages/SignUpSeller";
 import FormBiodata from "../pages/FormBiodata";
 import InputProduct from "../pages/InputProduct";
