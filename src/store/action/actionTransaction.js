@@ -1,6 +1,4 @@
 import axios from "axios";
-import ItemDetail from "../../pages/ItemDetail";
-// import { getDetail } from "./actionProduct";
 
 export const getTransDetail = (props) => {
   return async (dispatch) => {

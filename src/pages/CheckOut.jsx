@@ -17,7 +17,7 @@ class CheckOut extends React.Component {
     return (
       <Fragment>
         <Navigation {...this.props} />
-        <div>
+        <div className="container">
           <h3>TERIMAKASIH TELAH BERBELANJA DI ROSE.CLO</h3>
           <Link to="/">kembali ke home</Link>
         </div>
