@@ -11,7 +11,7 @@ const ItemDetailComp = (props, postTransaction) => {
     await props.postCart(e.target.value);
 
     props.statusError
-      ? alert("anda belum berhasil sign up!")
+      ? alert("anda belum berhasil menambahkan product!")
       : props.history.push("/cart");
   };
 
@@ -44,32 +44,6 @@ const ItemDetailComp = (props, postTransaction) => {
               >
                 Add to Cart
               </button>
-              <button
-                type="button"
-                className="btn"
-                style={{
-                  backgroundColor: "red",
-                  borderRadius: "50px",
-                  fontWeight: "bold",
-                }}
-              >
-                Beli Sekarang!
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-5 mt-5">
-            <div className="row" style={{ marginLeft: "100px" }}>
-              <div className="col-3">
-                <img src={props.gambar} alt="baju" id="gambar-detail" />
-              </div>
-              <div className="col-3">
-                <img src={props.gambar} alt="baju" id="gambar-detail" />
-              </div>
-              <div className="col-3">
-                <img src={props.gambar} alt="baju" id="gambar-detail" />
-              </div>
             </div>
           </div>
         </div>

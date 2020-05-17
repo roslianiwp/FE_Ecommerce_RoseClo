@@ -62,7 +62,7 @@ const Navigation = (props, postSignout, changeRouter) => {
               <li className="nav-item nav-link">
                 <Link to="/cart">
                   <IconButton aria-label="cart">
-                    <Badge badgeContent={4} color="secondary">
+                    <Badge color="secondary">
                       <ShoppingCartIcon
                         style={{ width: "40px", height: "40px" }}
                       />

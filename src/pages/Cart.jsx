@@ -45,7 +45,7 @@ class Cart extends React.Component {
                       <div className="row" key={index}>
                         <div className="col-sm-8">
                           <h3>Nama toko: {el.cart.shop_id.name}</h3>
-                          {el.transaction_detail.slice(0, 1).map((subel, i) => {
+                          {el.transaction_detail.map((subel, i) => {
                             return (
                               <div key={i}>
                                 <img
@@ -62,7 +62,7 @@ class Cart extends React.Component {
                         <br />
                         <hr></hr>
                         <div className="col-sm-4">
-                          {el.transaction_detail.slice(0, 1).map((subel, i) => {
+                          {el.transaction_detail.map((subel, i) => {
                             return (
                               <div key={i}>
                                 <h4 className="product-name">
@@ -74,36 +74,21 @@ class Cart extends React.Component {
                                   <small>size: {subel.product_id.size}</small>
                                   <br />
                                   <small>harga: {subel.product_id.price}</small>
-                                  <h5>jumlah barang:{el.cart.total_qty}</h5>
-                                  
                                 </h5>
+
+                                <button
+                                  className="button-color"
+                                  value={subel.id}
+                                  onClick={(e) => this.delTrans(e)}
+                                >
+                                  Delete item
+                                </button>
                               </div>
                             );
                           })}
                           <div className="col-sm-6">
                             <div className="col-sm-6 text-right"></div>
-                            <div className="col-sm-4">
-                              {/* <input
-                                type="text"
-                                className="form-control input-sm"
-                                
-                              /> */}
-                              {el.transaction_detail
-                                .slice(0, 1)
-                                .map((subel, i) => {
-                                  return (
-                                    <div key={i}>
-                                      <button
-                                        className="button-color"
-                                        value={subel.id}
-                                        onClick={(e) => this.delTrans(e)}
-                                      >
-                                        Delete item
-                                      </button>
-                                    </div>
-                                  );
-                                })}
-                            </div>
+                            <div className="col-sm-4"></div>
 
                             <div className="col-sm-2">
                               <button
@@ -125,33 +110,28 @@ class Cart extends React.Component {
 
                 <div className="row">
                   <div className="text-center">
-                    <div className="col-xs-9">
-                      {/* <h6 className="text-right">Added items?</h6> */}
-                    </div>
-                    {/* <div className="col-xs-3">
-                      <button
-                        type="button"
-                        className="btn btn-default btn-sm btn-block"
-                      >
-                        Update cart
-                      </button>
-                    </div> */}
+                    <div className="col-xs-9"></div>
                   </div>
                 </div>
               </div>
               <div className="panel-footer">
                 <div className="row text-center">
                   <div className="col-xs-9">
-                    <h4 className="text-right">
-                      Total <strong>$50.00</strong>
-                    </h4>
+                    {this.props.data.map((el, index) => (
+                      <div key={index}>
+                        <h4 className="text-right">
+                          Jumlah barang <strong>{el.cart.total_qty}</strong>
+                          <br />
+                          Total <strong>Rp{el.cart.total_price}.-</strong>
+                        </h4>
+                      </div>
+                    ))}
                   </div>
-                  {/* <div className="col-xs-3"> */}
+
                   <br />
                   <button type="button" className="btn btn-success btn-block">
                     Checkout
                   </button>
-                  {/* </div> */}
                 </div>
               </div>
             </div>
