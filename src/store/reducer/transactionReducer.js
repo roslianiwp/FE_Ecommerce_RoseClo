@@ -23,6 +23,10 @@ export default function transReducer(transState = initialState, action) {
         ...transState,
         statusError: false,
       };
+    case "SUCCESS_CEKOUT":
+      return {
+        ...transState,
+      };
     default:
       return transState;
   }

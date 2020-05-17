@@ -3,7 +3,11 @@ import Navigation from "../components/NavBar";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
 import { doSignOut } from "../store/action/actionUser";
-import { getTransDetail, deleteTrans } from "../store/action/actionTransaction";
+import {
+  getTransDetail,
+  deleteTrans,
+  checkOut,
+} from "../store/action/actionTransaction";
 import { getDetail } from "../store/action/actionProduct";
 // import { Link } from "react-router-dom";
 import { MDBBtn } from "mdbreact";
@@ -16,6 +20,11 @@ class Cart extends React.Component {
   delTrans = async (e) => {
     e.preventDefault();
     await this.props.deleteTrans(e.target.value);
+  };
+
+  cekOut = async () => {
+    await this.props.checkOut();
+    this.props.history.push("/checkout");
   };
 
   render() {
@@ -129,7 +138,11 @@ class Cart extends React.Component {
                   </div>
 
                   <br />
-                  <button type="button" className="btn btn-success btn-block">
+                  <button
+                    type="button"
+                    className="btn btn-success btn-block"
+                    onClick={(e) => this.cekOut(e)}
+                  >
                     Checkout
                   </button>
                 </div>
@@ -156,6 +169,7 @@ const mapDispatchToProps = {
   getTransDetail,
   getDetail,
   deleteTrans,
+  checkOut,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

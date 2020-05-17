@@ -11,6 +11,7 @@ import ItemDetail from "../pages/ItemDetail";
 import SignUpSeller from "../pages/SignUpSeller";
 import FormBiodata from "../pages/FormBiodata";
 import InputProduct from "../pages/InputProduct";
+import CheckOut from "../pages/CheckOut";
 import NotFound from "../pages/NotFound";
 import Cart from "../pages/Cart";
 
@@ -30,6 +31,7 @@ const MainRoutes = () => {
           <Route exact path="/biodata" component={FormBiodata} />
           <Route exact path="/inputproduct" component={InputProduct} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/checkout" component={CheckOut} />
           <Route exact path="/item/:category" component={Items} />
           <Route exact path="/itemdetail/:id" component={ItemDetail} />
           <Route component={NotFound} />

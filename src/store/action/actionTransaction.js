@@ -69,3 +69,27 @@ export const deleteTrans = (item) => {
       });
   };
 };
+
+export const checkOut = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      status: false,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/transaction/checkout", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_CEKOUT" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
