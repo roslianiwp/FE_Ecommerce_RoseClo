@@ -20,6 +20,7 @@ class Profile extends React.Component {
   };
   render() {
     const login = localStorage.getItem("is_login");
+    const statusKu = localStorage.getItem("status");
     if (!login) {
       return <Redirect to={{ pathname: "/signin" }} />;
     } else {
@@ -65,86 +66,94 @@ class Profile extends React.Component {
             </div>
           </section>
           {/* HISTORY TRANSACTION */}
-          <section>
-            <div className="container">
-              <div className="row table-responsive">
-                <div className="col-sm-12">
-                  <table className="table">
-                    <thead className="thead-dark">
-                      <tr>
-                        <th scope="col">
-                          <h3>Barang yang sudah terjual</h3>
-                        </th>
-                      </tr>
-                    </thead>
-                    {this.props.data.map((el, index) => {
-                      return (
-                        <tbody>
-                          <div key={index}>
-                            {el.transaction_detail.map((subel, i) => {
-                              return (
-                                <tr>
-                                  <th scope="row"></th>
-                                  <div
-                                    key={i}
-                                    className="d-flex justify-content-center"
-                                  >
-                                    <td>{subel.product_id.created_at}</td>
-                                    <td>
-                                      <span>
-                                        Pembeli: {el.cart.customer_id.name}
-                                      </span>
-                                      <br />
-                                      <span>
-                                        Alamat pengiriman:
+          {statusKu === "seller" ? (
+            <section>
+              <div className="container">
+                <div className="row table-responsive">
+                  <div className="col-sm-12">
+                    <table className="table">
+                      <thead className="thead-dark">
+                        <tr>
+                          <th scope="col">
+                            <h3>Barang yang sudah terjual</h3>
+                          </th>
+                        </tr>
+                      </thead>
+                      {this.props.data.map((el, index) => {
+                        return (
+                          <tbody>
+                            <div key={index}>
+                              {el.transaction_detail.map((subel, i) => {
+                                return (
+                                  <tr>
+                                    <th scope="row"></th>
+                                    <div
+                                      key={i}
+                                      className="d-flex justify-content-center"
+                                    >
+                                      <td>{subel.product_id.created_at}</td>
+                                      <td>
+                                        <span>
+                                          Pembeli: {el.cart.customer_id.name}
+                                        </span>
                                         <br />
-                                        {el.cart.customer_id.street}
-                                      </span>
-                                      <br />
-                                      <span>
-                                        {el.cart.customer_id.city_type}{" "}
-                                        {el.cart.customer_id.city}
-                                      </span>
-                                      <br />
-                                      <span>
-                                        {el.cart.customer_id.postal_code}
-                                      </span>
-                                    </td>
-                                    <td>
-                                      <h5>{subel.product_id.name}</h5>
-                                      <img
-                                        className="img-responsive"
-                                        src={subel.product_id.image}
-                                        alt="coba"
-                                        style={{ width: "200px" }}
-                                      />
-                                    </td>
-                                    <td>
-                                      <span>qty: {subel.qty} pcs</span>
-                                    </td>
-                                    <td>
-                                      <span>Rp.{subel.product_id.price},-</span>
-                                    </td>
-                                    <td>
-                                      <span>
-                                        color: {subel.product_id.color}{" "}
-                                      </span>
-                                      <br />
-                                      <span>size: {subel.product_id.size}</span>
-                                    </td>
-                                  </div>
-                                </tr>
-                              );
-                            })}
-                          </div>
-                        </tbody>
-                      );
-                    })}
-                  </table>
+                                        <span>
+                                          Alamat pengiriman:
+                                          <br />
+                                          {el.cart.customer_id.street}
+                                        </span>
+                                        <br />
+                                        <span>
+                                          {el.cart.customer_id.city_type}{" "}
+                                          {el.cart.customer_id.city}
+                                        </span>
+                                        <br />
+                                        <span>
+                                          {el.cart.customer_id.postal_code}
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <h5>{subel.product_id.name}</h5>
+                                        <img
+                                          className="img-responsive"
+                                          src={subel.product_id.image}
+                                          alt="coba"
+                                          style={{ width: "200px" }}
+                                        />
+                                      </td>
+                                      <td>
+                                        <span>qty: {subel.qty} pcs</span>
+                                      </td>
+                                      <td>
+                                        <span>
+                                          Rp.{subel.product_id.price},-
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <span>
+                                          color: {subel.product_id.color}{" "}
+                                        </span>
+                                        <br />
+                                        <span>
+                                          size: {subel.product_id.size}
+                                        </span>
+                                      </td>
+                                    </div>
+                                  </tr>
+                                );
+                              })}
+                            </div>
+                          </tbody>
+                        );
+                      })}
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          ) : (
+            false
+          )}
 
           <Footer />
         </Fragment>
