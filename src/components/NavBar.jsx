@@ -159,72 +159,76 @@ const Navigation = (props, postSignout, changeRouter) => {
         </nav>
       </div>
       {/* ===============Navbar kedua===================== */}
-      <nav
-        className="navbar navbar-expand-lg navbar-light pl-5"
-        style={{ backgroundColor: "white" }}
-        id="navbar-kedua"
-      >
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+      {statusKu === "admin" ? (
+        false
+      ) : (
+        <nav
+          className="navbar navbar-expand-lg navbar-light pl-5"
+          style={{ backgroundColor: "white" }}
+          id="navbar-kedua"
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav kedua">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Our Products <span className="sr-only"></span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" onClick={() => changeRouter(2)}>
-                Kemeja
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" onClick={() => changeRouter(1)}>
-                Celana
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" onClick={() => changeRouter(4)}>
-                Sepatu
-              </Link>
-            </li>
-          </ul>
-          {statusKu === "customer" || login === null ? (
-            <ul className="navbar-nav ml-auto" id="selling">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav kedua">
               <li className="nav-item">
-                <Link
-                  to="/signupseller"
-                  className="nav-link"
-                  style={{ textDecoration: "none" }}
-                >
-                  Start Selling
+                <Link className="nav-link" to="/">
+                  Our Products <span className="sr-only"></span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={() => changeRouter(2)}>
+                  Kemeja
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={() => changeRouter(1)}>
+                  Celana
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" onClick={() => changeRouter(4)}>
+                  Sepatu
                 </Link>
               </li>
             </ul>
-          ) : (
-            <ul className="navbar-nav ml-auto" id="selling">
-              <li className="nav-item">
-                <Link
-                  to="/inputproduct"
-                  className="nav-link"
-                  style={{ textDecoration: "none" }}
-                >
-                  Input Product!
-                </Link>
-              </li>
-            </ul>
-          )}
-        </div>
-      </nav>
+            {statusKu === "customer" || login === null ? (
+              <ul className="navbar-nav ml-auto" id="selling">
+                <li className="nav-item">
+                  <Link
+                    to="/signupseller"
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Start Selling
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              <ul className="navbar-nav ml-auto" id="selling">
+                <li className="nav-item">
+                  <Link
+                    to="/inputproduct"
+                    className="nav-link"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Input Product!
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </div>
+        </nav>
+      )}
     </Fragment>
   );
 };

@@ -16,6 +16,9 @@ const initialState = {
   street: "",
   phone: "",
   bio: [],
+  client: [],
+  paymentMethod: "",
+  shippingMethod: "",
 };
 
 export default function userReducer(userState = initialState, action) {
@@ -64,6 +67,19 @@ export default function userReducer(userState = initialState, action) {
         street: action.payload.street,
         phone: action.payload.phone,
         bio: action.payload,
+      };
+    case "SUCCESS_GET_CLIENT":
+      return {
+        ...userState,
+        client: action.payload,
+      };
+    case "SUCCESS_DEL_CLIENT":
+      return {
+        ...userState,
+      };
+    case "SUCCESS_POST":
+      return {
+        ...userState,
       };
     default:
       return userState;

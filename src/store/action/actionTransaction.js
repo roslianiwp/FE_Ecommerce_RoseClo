@@ -42,7 +42,7 @@ export const postTrans = (item) => {
         dispatch({ type: "SUCCESS_POST_TRANS" });
       })
       .catch(function (error) {
-        console.log(error);
+        alert("anda belum mengisi data diri!");
       });
   };
 };

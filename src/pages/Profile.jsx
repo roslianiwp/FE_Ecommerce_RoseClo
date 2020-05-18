@@ -64,6 +64,7 @@ class Profile extends React.Component {
               </div>
             </div>
           </section>
+          {/* HISTORY TRANSACTION */}
           <section>
             <div className="container">
               <div className="row table-responsive">
@@ -88,6 +89,27 @@ class Profile extends React.Component {
                                     key={i}
                                     className="d-flex justify-content-center"
                                   >
+                                    <td>{subel.product_id.created_at}</td>
+                                    <td>
+                                      <span>
+                                        Pembeli: {el.cart.customer_id.name}
+                                      </span>
+                                      <br />
+                                      <span>
+                                        Alamat pengiriman:
+                                        <br />
+                                        {el.cart.customer_id.street}
+                                      </span>
+                                      <br />
+                                      <span>
+                                        {el.cart.customer_id.city_type}{" "}
+                                        {el.cart.customer_id.city}
+                                      </span>
+                                      <br />
+                                      <span>
+                                        {el.cart.customer_id.postal_code}
+                                      </span>
+                                    </td>
                                     <td>
                                       <h5>{subel.product_id.name}</h5>
                                       <img
@@ -110,15 +132,6 @@ class Profile extends React.Component {
                                       <br />
                                       <span>size: {subel.product_id.size}</span>
                                     </td>
-                                    <td>
-                                      <button
-                                        className="button-color"
-                                        value={subel.id}
-                                        onClick={(e) => this.delTrans(e)}
-                                      >
-                                        Delete item
-                                      </button>
-                                    </td>
                                   </div>
                                 </tr>
                               );
@@ -128,18 +141,6 @@ class Profile extends React.Component {
                       );
                     })}
                   </table>
-                </div>
-              </div>
-              <div className="row d-flex justify-content-end text-right">
-                <div className="col-sm-12">
-                  {this.props.data.map((el, index) => (
-                    <div key={index}>
-                      <span>Total qty: {el.cart.total_qty}</span>
-                      <br />
-                      <span>Subtotal: Rp.{el.cart.total_price},-</span>
-                      <br />
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>

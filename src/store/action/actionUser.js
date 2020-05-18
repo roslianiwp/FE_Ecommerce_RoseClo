@@ -209,3 +209,91 @@ export const editBiodata = (props) => {
     }
   };
 };
+
+export const getAllClient = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    await axios
+      .get("http://0.0.0.0:5050/client", {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_CLIENT", payload: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const deleteClient = (id) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    await axios
+      .delete("http://0.0.0.0:5050/client/" + id, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_DEL_CLIENT" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const postPaymentMethod = () => {
+  return async (dispatch, getState) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      name: getState().user.paymentMethod,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/payment_method", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_POST" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const postShippingMethod = () => {
+  return async (dispatch, getState) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      name: getState().user.shippingMethod,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/shipping", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_POST" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
