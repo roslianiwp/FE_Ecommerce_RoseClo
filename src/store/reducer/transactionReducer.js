@@ -27,6 +27,11 @@ export default function transReducer(transState = initialState, action) {
       return {
         ...transState,
       };
+    case "SUCCESS_GET_ALLTRANS":
+      return {
+        ...transState,
+        dataCart: action.payload,
+      };
     default:
       return transState;
   }

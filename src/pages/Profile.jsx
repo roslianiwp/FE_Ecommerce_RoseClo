@@ -10,11 +10,13 @@ import {
   doSignOut,
   getBiodata,
 } from "../store/action/actionUser";
+import { getHistoryTrans } from "../store/action/actionTransaction";
 import "../css/Profile.css";
 
 class Profile extends React.Component {
-  componentDidMount = () => {
-    this.props.getBiodata();
+  componentDidMount = async () => {
+    await this.props.getBiodata();
+    await this.props.getHistoryTrans();
   };
   render() {
     const login = localStorage.getItem("is_login");
@@ -62,6 +64,86 @@ class Profile extends React.Component {
               </div>
             </div>
           </section>
+          <section>
+            <div className="container">
+              <div className="row table-responsive">
+                <div className="col-sm-12">
+                  <table className="table">
+                    <thead className="thead-dark">
+                      <tr>
+                        <th scope="col">
+                          <h3>Barang yang sudah terjual</h3>
+                        </th>
+                      </tr>
+                    </thead>
+                    {this.props.data.map((el, index) => {
+                      return (
+                        <tbody>
+                          <div key={index}>
+                            {el.transaction_detail.map((subel, i) => {
+                              return (
+                                <tr>
+                                  <th scope="row"></th>
+                                  <div
+                                    key={i}
+                                    className="d-flex justify-content-center"
+                                  >
+                                    <td>
+                                      <h5>{subel.product_id.name}</h5>
+                                      <img
+                                        className="img-responsive"
+                                        src={subel.product_id.image}
+                                        alt="coba"
+                                        style={{ width: "200px" }}
+                                      />
+                                    </td>
+                                    <td>
+                                      <span>qty: {subel.qty} pcs</span>
+                                    </td>
+                                    <td>
+                                      <span>Rp.{subel.product_id.price},-</span>
+                                    </td>
+                                    <td>
+                                      <span>
+                                        color: {subel.product_id.color}{" "}
+                                      </span>
+                                      <br />
+                                      <span>size: {subel.product_id.size}</span>
+                                    </td>
+                                    <td>
+                                      <button
+                                        className="button-color"
+                                        value={subel.id}
+                                        onClick={(e) => this.delTrans(e)}
+                                      >
+                                        Delete item
+                                      </button>
+                                    </td>
+                                  </div>
+                                </tr>
+                              );
+                            })}
+                          </div>
+                        </tbody>
+                      );
+                    })}
+                  </table>
+                </div>
+              </div>
+              <div className="row d-flex justify-content-end text-right">
+                <div className="col-sm-12">
+                  {this.props.data.map((el, index) => (
+                    <div key={index}>
+                      <span>Total qty: {el.cart.total_qty}</span>
+                      <br />
+                      <span>Subtotal: Rp.{el.cart.total_price},-</span>
+                      <br />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
 
           <Footer />
         </Fragment>
@@ -81,6 +163,7 @@ const mapStateToProps = (state) => {
     city_type: state.user.city_type,
     street: state.user.street,
     phone: state.user.phone,
+    data: state.trans.dataCart,
   };
 };
 const mapDispatchToProps = {
@@ -88,5 +171,6 @@ const mapDispatchToProps = {
   doLogin,
   doSignOut,
   getBiodata,
+  getHistoryTrans,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

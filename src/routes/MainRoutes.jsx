@@ -14,6 +14,7 @@ import InputProduct from "../pages/InputProduct";
 import CheckOut from "../pages/CheckOut";
 import NotFound from "../pages/NotFound";
 import Cart from "../pages/Cart";
+import Admin from "../pages/Admin";
 
 const MainRoutes = () => {
   return (
@@ -32,6 +33,7 @@ const MainRoutes = () => {
           <Route exact path="/inputproduct" component={InputProduct} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/checkout" component={CheckOut} />
+          <Route exact path="/admin" component={Admin} />
           <Route exact path="/item/:category" component={Items} />
           <Route exact path="/itemdetail/:id" component={ItemDetail} />
           <Route component={NotFound} />

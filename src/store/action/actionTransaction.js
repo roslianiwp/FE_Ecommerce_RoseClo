@@ -90,3 +90,23 @@ export const checkOut = () => {
       });
   };
 };
+
+export const getHistoryTrans = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    await axios
+      .get("http://0.0.0.0:5050/transaction/checkout", {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_ALLTRANS", payload: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
