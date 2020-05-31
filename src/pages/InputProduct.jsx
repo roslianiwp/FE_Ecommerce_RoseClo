@@ -15,17 +15,22 @@ class InputProduct extends React.Component {
     await this.props.inputProdukSeller();
     this.props.statusError
       ? alert("anda gagal ngepost produk!")
-      : this.props.history.push("/");
+      : this.props.history.push("/profile");
   };
 
   render() {
+    const product_id = localStorage.getItem("product_id");
     return (
       <Fragment>
         <Navigation {...this.props} />
         <div className="container">
           <div className="row">
             <div className="col-sm-6">
-              <h3 className="mt-5">Form Input Produk</h3>
+              {product_id ? (
+                <h3 className="mt-5">Form Edit Produk</h3>
+              ) : (
+                <h3 className="mt-5">Form Input Produk</h3>
+              )}
               <form>
                 <div className="form-group">
                   <label for="formGroupExampleInput" id="label">
@@ -180,7 +185,11 @@ class InputProduct extends React.Component {
                       value="true"
                       onChange={(e) => this.props.changeInput(e)}
                     />
-                    <label className="form-check-label" for="inlineRadio1">
+                    <label
+                      className="form-check-label"
+                      for="inlineRadio1"
+                      id="label"
+                    >
                       Ya
                     </label>
                   </div>

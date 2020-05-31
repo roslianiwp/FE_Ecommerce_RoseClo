@@ -7,12 +7,23 @@ import {
   getTransDetail,
   deleteTrans,
   checkOut,
+  updateQtyPlus,
+  updateQtyMinus,
 } from "../store/action/actionTransaction";
 import { getDetail } from "../store/action/actionProduct";
-
+import "../css/Cart.css";
 class Cart extends React.Component {
   componentDidMount = async () => {
     await this.props.getTransDetail();
+  };
+
+  componentDidUpdate = async (prevProps) => {
+    if (this.props.deleted) {
+      await this.props.getTransDetail();
+    }
+    if (this.props.qtyUpdated) {
+      await this.props.getTransDetail();
+    }
   };
 
   delTrans = async (e) => {
@@ -23,6 +34,18 @@ class Cart extends React.Component {
   cekOut = async () => {
     await this.props.checkOut();
     this.props.history.push("/checkout");
+  };
+
+  clickPlus = async (event) => {
+    event.preventDefault();
+    console.log("masuk plus", event.target.value);
+    await this.props.updateQtyPlus(event.target.value);
+  };
+
+  clickMinus = async (event) => {
+    event.preventDefault();
+    console.log("masuk minus", event.target.value);
+    await this.props.updateQtyMinus(event.target.value);
   };
 
   render() {
@@ -71,6 +94,26 @@ class Cart extends React.Component {
                                   <span>color: {subel.product_id.color} </span>
                                   <br />
                                   <span>size: {subel.product_id.size}</span>
+                                </td>
+                                <td>
+                                  <button
+                                    className="tombolplusmin"
+                                    value={subel.product_id.id}
+                                    onClick={(e) => this.clickMinus(e)}
+                                  >
+                                    -
+                                  </button>
+                                  <span className="qtydiplusmin">
+                                    {subel.qty}
+                                  </span>
+                                  <button
+                                    className="tombolplusmin"
+                                    value={subel.product_id.id}
+                                    onClick={(e) => this.clickPlus(e)}
+                                  >
+                                    {" "}
+                                    +
+                                  </button>
                                 </td>
                                 <td>
                                   <button
@@ -124,6 +167,8 @@ const mapStateToProps = (state) => {
     login: state.user.is_login,
     data: state.trans.dataCart,
     dataDetail: state.product.dataDetail,
+    deleted: state.trans.deleted,
+    qtyUpdated: state.trans.qtyUpdated,
   };
 };
 
@@ -133,6 +178,8 @@ const mapDispatchToProps = {
   getDetail,
   deleteTrans,
   checkOut,
+  updateQtyPlus,
+  updateQtyMinus,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

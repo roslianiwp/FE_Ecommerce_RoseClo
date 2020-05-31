@@ -53,6 +53,22 @@ export default function productReducer(productState = initialState, action) {
         ...productState,
         dataDetail: action.payload,
       };
+    case "REQUEST_LIST_SUCCESS_SELLER":
+      return {
+        ...productState,
+        data: action.payload,
+        deleted: false,
+      };
+    case "DELETED_SUCCESS_SELLER":
+      return {
+        ...productState,
+        deleted: true,
+      };
+    case "SUCCESS_UPDATE_PRODUCT":
+      return {
+        ...productState,
+        statusError: false,
+      };
     default:
       return productState;
   }

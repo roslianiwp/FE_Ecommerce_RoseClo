@@ -20,6 +20,60 @@ export const getTransDetail = (props) => {
   };
 };
 
+export const updateQtyPlus = (e) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      product_id: e,
+      qty: 1,
+      shipping_id: 1,
+      payment_method_id: 1,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/transaction", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_UPDATECART", payload: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const updateQtyMinus = (e) => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      product_id: e,
+      qty: -1,
+      shipping_id: 1,
+      payment_method_id: 1,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/transaction", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_GET_UPDATECART", payload: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
 export const postTrans = (item) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
@@ -94,19 +148,37 @@ export const checkOut = () => {
 export const getHistoryTrans = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    await axios
-      .get("http://0.0.0.0:5050/transaction/checkout", {
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json; charset=utf-8",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(async (response) => {
-        dispatch({ type: "SUCCESS_GET_ALLTRANS", payload: response.data });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    const status = localStorage.getItem("status");
+    if (status === "seller") {
+      await axios
+        .get("http://0.0.0.0:5050/transaction/checkout", {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json; charset=utf-8",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(async (response) => {
+          dispatch({ type: "SUCCESS_GET_ALLTRANS", payload: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      await axios
+        .get("http://0.0.0.0:5050/transaction/historybuyer", {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json; charset=utf-8",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(async (response) => {
+          dispatch({ type: "SUCCESS_GET_ALLTRANS", payload: response.data });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
 };

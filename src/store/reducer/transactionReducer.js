@@ -12,6 +12,8 @@ export default function transReducer(transState = initialState, action) {
       return {
         ...transState,
         dataCart: action.payload,
+        deleted: false,
+        qtyUpdated: false,
       };
     case "SUCCESS_POST_TRANS":
       return {
@@ -22,6 +24,12 @@ export default function transReducer(transState = initialState, action) {
       return {
         ...transState,
         statusError: false,
+        deleted: true,
+      };
+    case "SUCCESS_GET_UPDATECART":
+      return {
+        ...transState,
+        qtyUpdated: true,
       };
     case "SUCCESS_CEKOUT":
       return {

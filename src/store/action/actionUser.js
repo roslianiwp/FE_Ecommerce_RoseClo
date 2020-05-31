@@ -174,7 +174,7 @@ export const editBiodata = (props) => {
             console.log(error);
           });
       }
-    } else if (isian !== []) {
+    } else {
       if (status === "customer") {
         await axios
           .patch("http://0.0.0.0:5050/customer/profile", myJSON, {

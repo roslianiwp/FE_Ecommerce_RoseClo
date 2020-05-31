@@ -1,0 +1,13 @@
+.tombolplusmin {
+  border-radius: 100%;
+  margin: 0 10px;
+  background-color: black;
+  color: pink;
+  font-size: 20px;
+  /* border: none; */
+}
+
+.qtydiplusmin {
+  border: 1px grey solid;
+  padding: 2px 7px;
+}

@@ -58,19 +58,23 @@ const Navigation = (props, postSignout, changeRouter) => {
                 />
               </div>
             </form>
-            <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
-              <li className="nav-item nav-link">
-                <Link to="/cart">
-                  <IconButton aria-label="cart">
-                    <Badge color="secondary">
-                      <ShoppingCartIcon
-                        style={{ width: "40px", height: "40px" }}
-                      />
-                    </Badge>
-                  </IconButton>
-                </Link>
-              </li>
-            </ul>
+            {statusKu === "customer" ? (
+              <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
+                <li className="nav-item nav-link">
+                  <Link to="/cart">
+                    <IconButton aria-label="cart">
+                      <Badge color="secondary">
+                        <ShoppingCartIcon
+                          style={{ width: "40px", height: "40px" }}
+                        />
+                      </Badge>
+                    </IconButton>
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              false
+            )}
             {login ? (
               <ul className="navbar-nav mt-2 mt-lg-0 ml-lg-5 uldua">
                 <li className="nav-item nav-link" id="huruf">
