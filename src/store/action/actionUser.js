@@ -4,7 +4,7 @@ export const doLogin = () => {
   return async (dispatch, getState) => {
     await axios({
       method: "GET",
-      url: "http://0.0.0.0:5050/login",
+      url: "https://clothingbe.roslianistory.my.id/login",
       params: {
         username: getState().user.namaPengguna,
         password: getState().user.kataKunci,
@@ -33,7 +33,7 @@ export const doSignUpSeller = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/client", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/client", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -57,7 +57,7 @@ export const doSignUpCustomer = (props) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/client", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/client", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -94,7 +94,7 @@ export const getBiodata = () => {
     const token = localStorage.getItem("token");
     if (status === "customer") {
       await axios
-        .get("http://0.0.0.0:5050/customer/profile", {
+        .get("https://clothingbe.roslianistory.my.id/customer/profile", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -109,7 +109,7 @@ export const getBiodata = () => {
         });
     } else if (status === "seller") {
       await axios
-        .get("http://0.0.0.0:5050/shop/profile", {
+        .get("https://clothingbe.roslianistory.my.id/shop/profile", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -145,13 +145,17 @@ export const editBiodata = (props) => {
     if (isian === []) {
       if (status === "customer") {
         await axios
-          .post("http://0.0.0.0:5050/customer/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .post(
+            "https://clothingbe.roslianistory.my.id/customer/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_PROFILE" });
           })
@@ -160,7 +164,7 @@ export const editBiodata = (props) => {
           });
       } else if (status === "seller") {
         await axios
-          .post("http://0.0.0.0:5050/shop/profile", myJSON, {
+          .post("https://clothingbe.roslianistory.my.id/shop/profile", myJSON, {
             headers: {
               "Content-Type": "application/json; charset=utf-8",
               Accept: "application/json; charset=utf-8",
@@ -177,13 +181,17 @@ export const editBiodata = (props) => {
     } else {
       if (status === "customer") {
         await axios
-          .patch("http://0.0.0.0:5050/customer/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .patch(
+            "https://clothingbe.roslianistory.my.id/customer/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_PROFILE" });
           })
@@ -192,13 +200,17 @@ export const editBiodata = (props) => {
           });
       } else if (status === "seller") {
         await axios
-          .patch("http://0.0.0.0:5050/shop/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .patch(
+            "https://clothingbe.roslianistory.my.id/shop/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_PROFILE" });
           })
@@ -214,7 +226,7 @@ export const getAllClient = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     await axios
-      .get("http://0.0.0.0:5050/client", {
+      .get("https://clothingbe.roslianistory.my.id/client", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -234,7 +246,7 @@ export const deleteClient = (id) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     await axios
-      .delete("http://0.0.0.0:5050/client/" + id, {
+      .delete("https://clothingbe.roslianistory.my.id/client/" + id, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -258,7 +270,7 @@ export const postPaymentMethod = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/payment_method", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/payment_method", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -282,7 +294,7 @@ export const postShippingMethod = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/shipping", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/shipping", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
