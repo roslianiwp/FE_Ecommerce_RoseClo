@@ -102,7 +102,7 @@ export const getRes = (category) => {
     const response = await axios.get("http://0.0.0.0:5050/items");
     if (category !== null) {
       const filtercategory = response.data.filter((item) => {
-        if (item.product_category_id == category) {
+        if (+item.product_category_id === +category) {
           return item;
         } else {
           return false;
