@@ -4,7 +4,7 @@ export const getTransDetail = (props) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     await axios
-      .get("http://0.0.0.0:5050/transaction", {
+      .get("https://clothingbe.roslianistory.my.id/transaction", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -31,7 +31,7 @@ export const updateQtyPlus = (e) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/transaction", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/transaction", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -58,7 +58,7 @@ export const updateQtyMinus = (e) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/transaction", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/transaction", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -85,7 +85,7 @@ export const postTrans = (item) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/transaction", myJSON, {
+      .post("https://clothingbe.roslianistory.my.id/transaction", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -105,7 +105,7 @@ export const deleteTrans = (item) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     await axios
-      .delete("http://0.0.0.0:5050/transaction/" + item, {
+      .delete("https://clothingbe.roslianistory.my.id/transaction/" + item, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -129,13 +129,17 @@ export const checkOut = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/transaction/checkout", myJSON, {
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json; charset=utf-8",
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .post(
+        "https://clothingbe.roslianistory.my.id/transaction/checkout",
+        myJSON,
+        {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json; charset=utf-8",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(async (response) => {
         dispatch({ type: "SUCCESS_CEKOUT" });
       })
@@ -151,7 +155,7 @@ export const getHistoryTrans = () => {
     const status = localStorage.getItem("status");
     if (status === "seller") {
       await axios
-        .get("http://0.0.0.0:5050/transaction/checkout", {
+        .get("https://clothingbe.roslianistory.my.id/transaction/checkout", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -166,13 +170,16 @@ export const getHistoryTrans = () => {
         });
     } else {
       await axios
-        .get("http://0.0.0.0:5050/transaction/historybuyer", {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        .get(
+          "https://clothingbe.roslianistory.my.id/transaction/historybuyer",
+          {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then(async (response) => {
           dispatch({ type: "SUCCESS_GET_ALLTRANS", payload: response.data });
         })

@@ -46,7 +46,7 @@ export const inputProdukSeller = (props) => {
     const product_id = localStorage.getItem("product_id");
     if (product_id === null || product_id === undefined || product_id === "") {
       await axios
-        .post("http://0.0.0.0:5050/items", myJSON, {
+        .post("https://clothingbe.roslianistory.my.id/items", myJSON, {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -61,13 +61,17 @@ export const inputProdukSeller = (props) => {
         });
     } else {
       await axios
-        .patch("http://0.0.0.0:5050/items/" + product_id, myJSON, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        .patch(
+          "https://clothingbe.roslianistory.my.id/items/" + product_id,
+          myJSON,
+          {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then(async (response) => {
           dispatch({ type: "SUCCESS_UPDATE_PRODUCT" });
           localStorage.removeItem("product_id");
@@ -82,7 +86,7 @@ export const inputProdukSeller = (props) => {
 export const getProduk = (props) => {
   return async (dispatch) => {
     await axios
-      .get("http://0.0.0.0:5050/items", {
+      .get("https://clothingbe.roslianistory.my.id/items", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -99,7 +103,9 @@ export const getProduk = (props) => {
 
 export const getRes = (category) => {
   return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:5050/items");
+    const response = await axios.get(
+      "https://clothingbe.roslianistory.my.id/items"
+    );
     if (category !== null) {
       const filtercategory = response.data.filter((item) => {
         if (+item.product_category_id === +category) {
@@ -118,7 +124,9 @@ export const getRes = (category) => {
 
 export const getDetail = (category) => {
   return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:5050/items/" + category);
+    const response = await axios.get(
+      "https://clothingbe.roslianistory.my.id/items/" + category
+    );
     dispatch({
       type: "REQUEST_LIST_DETAIL_SUCCESS",
       payload: response.data,
@@ -130,7 +138,7 @@ export const getProdukSeller = () => {
   const token = localStorage.getItem("token");
   return async (dispatch) => {
     await axios
-      .get("http://0.0.0.0:5050/items/seller", {
+      .get("https://clothingbe.roslianistory.my.id/items/seller", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -153,7 +161,7 @@ export const deleteProdukSeller = (e) => {
   const token = localStorage.getItem("token");
   return async (dispatch) => {
     await axios
-      .delete("http://0.0.0.0:5050/items/" + e, {
+      .delete("https://clothingbe.roslianistory.my.id/items/" + e, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -210,7 +218,7 @@ export const deleteProdukSeller = (e) => {
 //     const myJSON = JSON.stringify(bodyRequest);
 
 //     await axios
-//       .patch("http://0.0.0.0:5050/items/" + e, myJSON, {
+//       .patch("https://clothingbe.roslianistory.my.id/items/" + e, myJSON, {
 //         headers: {
 //           "Content-Type": "application/json; charset=utf-8",
 //           Accept: "application/json; charset=utf-8",
