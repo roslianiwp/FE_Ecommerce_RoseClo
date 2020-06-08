@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Navigation from "../components/NavBar";
+// import Navigation from "../components/NavBar";
 import CarouselHome from "../components/CarouselHome";
 import NewArrival from "../components/NewArrival";
 import Footer from "../components/Footer";
