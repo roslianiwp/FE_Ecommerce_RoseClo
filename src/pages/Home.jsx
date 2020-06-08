@@ -28,10 +28,10 @@ class Home extends React.Component {
     });
     return (
       <Fragment>
-        <Navigation
+        {/* <Navigation
           handleRouter={(e) => this.handleRequestCategory(e)}
           {...this.props}
-        />
+        /> */}
         <CarouselHome />
         <div className="container-fluid text-center mt-sm-5">
           <span id="judul">Available Items</span>

@@ -133,9 +133,6 @@ const Navigation = (props, postSignout, changeRouter) => {
                   Sepatu
                 </Link>
               </li>
-              <li>
-                Coba travis jalan ngga
-              </li>
             </ul>
             {statusKu === "customer" || login === null ? (
               <ul className="navbar-nav" id="gede-ilang-selling">
