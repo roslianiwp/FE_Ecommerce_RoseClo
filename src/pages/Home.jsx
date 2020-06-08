@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Navigation from "../components/NavBar";
-import CarouselHome from "../components/CarouselHome";
+// import CarouselHome from "../components/CarouselHome";
 import NewArrival from "../components/NewArrival";
 import Footer from "../components/Footer";
 import { connect } from "react-redux";
@@ -32,7 +32,7 @@ class Home extends React.Component {
           handleRouter={(e) => this.handleRequestCategory(e)}
           {...this.props}
         />
-        <CarouselHome />
+        {/* <CarouselHome /> */}
         <div className="container-fluid text-center mt-sm-5">
           <span id="judul">Available Items</span>
           <hr />
